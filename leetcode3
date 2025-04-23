@@ -1,27 +1,27 @@
 import java.util.HashSet;
+class leetcode3{
+    public int lengthOfLongestSubstring(String s) {
+        int max1 =0;
+        int l=0;
+        HashSet <Character> set=new HashSet<>();
 
-public class leetcode3{
-
-    public static void lengthOfLongestSubstring(String s) {
-        int max= 0;
-        int left = 0;
-        HashSet <Character> set = new HashSet<>();
-
-        for (int right = 0; right < s.length(); right++) {
-              while (set.contains(s.charAt(right))) {
-                set.remove(s.charAt(left));
-                left++;
+        for(int r=0; r<s.length(); r++){
+            while(set.contains(s.charAt(r))){
+              set.remove(s.charAt(l));
+              l++;
             }
-            set.add(s.charAt(right));
-            max= Math.max(max, right - left + 1); 
-            }
-           System.out.println("length: "+max);
+             set.add(s.charAt(r));
+              max1=Math.max(max1,r-l+1);
+        }
+        return max1;
+        
     }
-
-
     public static void main(String[] args) {
+        leetcode3 n=new leetcode3();
         String s1 = "abcabcbb";
         System.out.println("Input: " + s1);
-        lengthOfLongestSubstring(s1);
+        int r=n.lengthOfLongestSubstring(s1);
+        System.out.println(r);
     }
 }
+
